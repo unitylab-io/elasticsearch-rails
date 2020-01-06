@@ -151,7 +151,7 @@ module Elasticsearch
           end
 
           if options.delete(:force)
-            self.create_index! force: true, index: target_index
+            self.create_index! force: true, index: target_index, include_type_name: !target_type.nil?
           elsif !self.index_exists? index: target_index
             raise ArgumentError,
                   "#{target_index} does not exist to be imported into. Use create_index! or the :force option to create it."
